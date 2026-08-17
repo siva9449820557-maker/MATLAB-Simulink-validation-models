@@ -1,0 +1,1 @@
+To evaluate the system-level predictive capability of the developed Artificial Neural Network (ANN) framework, a multi-hop path validation model was executed within a MATLAB/Simulink in the discrete-event environment
