@@ -1,0 +1,57 @@
+Key numbers: 30 seeds per scenario. Median [interquartile range] unless stated.
+Generated 07-Nov-2026 09:17:36 with MATLAB 26.2.0.3433840 (R2026b) Update 1
+
+NOMINAL ROUTE (no interference) - compare with ANN prediction in Table 4
+  On-time PDR            : 1.0000 (min over seeds 1.0000)
+  Mean latency           : 81.9 ms [81.8-82.0]
+  99th pct latency       : 87.5 ms [87.2-87.8]
+  Energy per packet      : 3.04 mJ
+  Residual error, CRC-16 only (upper bound): 3.05e-08 per packet = 1.10e-03 per hour
+  ... with an added 32-bit safety-layer CRC: 2.56e-13 per hour
+
+INTERFERENCE SWEEP (step on hops [5 6 7], 30-70 s)
+  dB | On-time PDR off        | On-time PDR on         | Min PST s off | Min PST s on | SDR@2s off/on | Trips off/on | Energy mJ off/on
+   0 | 1.000 [1.000-1.000]  | 1.000 [1.000-1.000]  |   0.67        |   0.67       | 1.000 / 1.000    |  0/30 /  0/30 | 3.04 / 3.04
+  20 | 1.000 [1.000-1.000]  | 1.000 [1.000-1.000]  |   0.68        |   0.68       | 1.000 / 1.000    |  0/30 /  0/30 | 3.05 / 3.07
+  24 | 1.000 [0.993-1.000]  | 1.000 [1.000-1.000]  |   0.68        |   0.68       | 1.000 / 1.000    |  0/30 /  0/30 | 3.08 / 3.13
+  26 | 0.994 [0.978-0.998]  | 1.000 [0.998-1.000]  |   0.68        |   0.68       | 1.000 / 1.000    |  0/30 /  0/30 | 3.12 / 3.17
+  28 | 0.959 [0.899-0.990]  | 0.995 [0.988-1.000]  |   0.74        |   0.68       | 0.986 / 1.000    |  1/30 /  0/30 | 3.24 / 3.22
+  30 | 0.853 [0.689-0.954]  | 0.975 [0.941-0.997]  |   0.79        |   0.68       | 0.957 / 1.000    |  2/30 /  1/30 | 3.59 / 3.29
+  32 | 0.593 [0.296-0.805]  | 0.944 [0.819-0.977]  |   0.99        |   0.71       | 0.927 / 0.977    |  8/30 /  2/30 | 4.65 / 3.46
+  34 | 0.224 [0.051-0.477]  | 0.755 [0.514-0.904]  |   2.09        |   0.80       | 0.788 / 0.949    | 17/30 /  3/30 | 10.11 / 3.84
+
+  Interference level where median on-time PDR falls to 0.90: 29.1 dB without ASMA, 32.5 dB with ASMA
+
+PAIRED COMPARISON, SAME SEEDS (ASMA minus no ASMA): mean difference [95% CI], seeds better/worse, sign-test p
+  20 dB on-time PDR : +0.001 [-0.000, +0.001]  2/0  p = 0.5
+  24 dB on-time PDR : +0.013 [-0.003, +0.029]  14/1  p = 0.000977
+  26 dB on-time PDR : +0.034 [-0.000, +0.069]  24/0  p = 1.19e-07
+  28 dB on-time PDR : +0.078 [+0.034, +0.123]  26/2  p = 3.03e-06
+  30 dB on-time PDR : +0.155 [+0.106, +0.205]  30/0  p = 1.86e-09
+  32 dB on-time PDR : +0.304 [+0.237, +0.370]  30/0  p = 1.86e-09
+  34 dB on-time PDR : +0.386 [+0.328, +0.443]  29/0  p = 3.73e-09
+  20 dB energy mJ   : +0.02 [+0.01, +0.02]  27/1  p = 2.16e-07
+  24 dB energy mJ   : +0.01 [-0.05, +0.06]  28/2  p = 8.68e-07
+  26 dB energy mJ   : -0.14 [-0.43, +0.15]  23/7  p = 0.00522
+  28 dB energy mJ   : -1.08 [-2.91, +0.75]  15/15  p = 1
+  30 dB energy mJ   : -15.72 [-44.44, +13.00]  4/26  p = 5.95e-05
+  32 dB energy mJ   : -54.34 [-125.35, +16.66]  1/29  p = 5.77e-08
+  34 dB energy mJ   : -31.38 [-82.35, +19.59]  1/29  p = 5.77e-08
+
+ASMA AT 30 dB
+  Reaction time (onset to boost at nodes) : 0.60 s [0.60-0.60]
+  Recovery to 93% windowed PDR           : 2.65 s [0.00-3.27]
+  ASMA active, fraction of run           : 0.45
+  False activations (all seeds)          : 1
+  Hop boost switch-on events per run     : 5.5
+
+ABLATION AT 30 dB: on-time PDR | delivered late (any latency minus on-time) | 99th pct latency ms
+  step_30dB_noASMA       : 0.853 | 0.026 | 102.6
+  step_30dB_retriesOnly  : 0.883 | 0.068 | 110.8
+  step_30dB_powerOnly    : 0.980 | 0.009 | 99.0
+  step_30dB_ASMA         : 0.975 | 0.020 | 102.1
+
+DISTURBANCE SHAPE AT 30 dB: median on-time PDR off / on
+  step   : 0.853 / 0.975
+  ramp   : 0.925 / 0.989
+  burst  : 0.932 / 0.984
