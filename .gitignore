@@ -1,0 +1,6 @@
+slprj/
+*.slxc
+*.asv
+*.autosave
+__pycache__/
+results/experiments_partial.mat
