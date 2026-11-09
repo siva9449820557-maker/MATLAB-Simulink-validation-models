@@ -25,7 +25,7 @@ route design and runtime link hardening for industrial wireless sensor networks"
 
 1. **Design time:** an artificial neural network (one tanh hidden layer per output),
    trained on 30,000 simulated IEEE 802.15.4 routes, predicts on-time packet delivery,
-   safety detection ratio, latency, energy and the shortest supportable process
+   successful detection ratio, latency, energy and the shortest supportable process
    safety time (PST) from seven design inputs. An optimiser uses it to find the
    route that tolerates the most interference while meeting the safety targets.
 2. **Run time:** ASMA, a base-station controller, watches per-hop link quality and

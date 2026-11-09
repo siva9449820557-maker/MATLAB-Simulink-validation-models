@@ -16,7 +16,7 @@ RANGE = {'K': (2, 12), 'MeanD_m': (10, 60), 'StdD_m': (0, 15), 'Tx_dBm': (-10, 0
          'Pkt_bits': (200, 900), 'Retries': (0, 5), 'Noise_dB': (0, 40)}
 EXAMPLE = {'K': 11, 'MeanD_m': 26.64, 'StdD_m': 0, 'Tx_dBm': 0, 'Pkt_bits': 900, 'Retries': 2, 'Noise_dB': 0}
 ONICE = {'PDR': ('On-time packet delivery ratio (PDR)', '0.000'),
-         'SDR': ('Safety detection ratio (SDR) at PST 2 s', '0.000'),
+         'SDR': ('Successful detection ratio (SDR) at PST 2 s', '0.000'),
          'NWLat_ms': ('Mean end-to-end latency (ms)', '0.0'),
          'LatP99_ms': ('99th percentile latency (ms)', '0.0'),
          'Energy_mJ': ('Energy per delivered packet (mJ)', '0.00'),
