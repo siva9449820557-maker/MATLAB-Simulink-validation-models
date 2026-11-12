@@ -34,7 +34,7 @@ commands below.
    retransmissions, so the ANN learns only the retransmission overhead.
    Energy and shortest PST are fitted on a log scale (typical values); the
    other outputs are fitted as averages.
-4. **Optimiser** (`optimize.py`): route length fixed at 293 m and payload at 900 bits.
+4. **Optimizer** (`optimize.py`): route length fixed at 293 m and payload at 900 bits.
    Searches 8,052 designs (K 5-12, spacing spread, transmit power, retries) for the
    largest interference level at which PDR >= 0.90, SDR >= 0.90 (PST 2 s),
    99th-percentile latency <= 100 ms and shortest supportable PST <= 2 s all hold.
@@ -51,8 +51,9 @@ commands below.
 | Shortest PST (log) | 0.842 (4) | 0.838 | 0.661 | - |
 
 Random shadowing and hop placement make identical designs perform differently,
-which caps the achievable R² at about 0.885 for PDR and 0.837 for SDR (measured by
-simulating 1,500 designs twice with different seeds). The ANN reaches that ceiling.
+which caps the achievable R² at about 0.886 for PDR and 0.838 for SDR (measured by
+simulating all 30,000 designs a second time with different seeds: `ceiling.py`,
+result in `r2_ceiling.csv`). The ANN reaches that ceiling.
 
 ## Optimum design (`optimum_table.csv`)
 
@@ -87,7 +88,8 @@ the safe direction.
 | `dataset.csv` | 30,000 simulated designs (inputs and outputs) |
 | `ann_model.json` | All weights, scalings and transforms |
 | `accuracy.csv` | Held-out accuracy of ANN and baselines |
-| `design_grid.csv`, `optimum_table.csv`, `pareto.csv` | Optimisation results |
+| `ceiling.py`, `r2_ceiling.csv` | Best R² any model can reach, given random shadowing and hop order |
+| `design_grid.csv`, `optimum_table.csv`, `pareto.csv` | Optimization results |
 | `validation_python.csv` | ANN vs simulation, 300 seeds per point |
 | `fig_ann_parity.png` | Predicted vs simulated, held-out designs |
 | `fig_tolerance_map.png` | Tolerance by hop count and retries |
@@ -105,4 +107,5 @@ python3 optimize.py
 python3 validate_py.py
 python3 make_figures.py
 python3 build_excel.py
+python3 ceiling.py             # R² ceiling, about 1.5 minutes
 ```
