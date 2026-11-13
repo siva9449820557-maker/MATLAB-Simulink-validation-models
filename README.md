@@ -18,15 +18,15 @@ route design and runtime link hardening for industrial wireless sensor networks"
 | Folder | What it holds |
 | --- | --- |
 | [`simulink/`](simulink) | MATLAB/Simulink models (built by script), ASMA controller, experiment, validation and analysis scripts. See [`simulink/README.md`](simulink/README.md). |
-| [`ann/`](ann) | Physics-based dataset (30,000 route designs), ANN training, optimisation and validation code (Python), trained weights, figures and an Excel calculator. See [`ann/README.md`](ann/README.md). |
-| [`results/`](results) | Outputs of the Simulink runs reported in the manuscript (MATLAB R2026b, 30 seeds per scenario): summary tables, per-seed metrics, ANN validation and figures. |
+| [`ann/`](ann) | Physics-based dataset (30,000 route designs), ANN training, optimization and validation code (Python), trained weights, figures and an Excel calculator. See [`ann/README.md`](ann/README.md). |
+| [`results/`](results) | Outputs of the Simulink runs reported in the manuscript (MATLAB R2026b, 30 seeds per scenario): summary tables, per-seed metrics, ANN validation and figures. `Manuscript_data_workbook.xlsx` recomputes every number in the manuscript from these files with Excel formulas (start at sheet *Claims*); `build_data_workbook.py` rebuilds it. |
 
 ## What the work does
 
 1. **Design time:** an artificial neural network (one tanh hidden layer per output),
    trained on 30,000 simulated IEEE 802.15.4 routes, predicts on-time packet delivery,
-   safety detection ratio, latency, energy and the shortest supportable process
-   safety time (PST) from seven design inputs. An optimiser uses it to find the
+   successful detection ratio, latency, energy and the shortest supportable process
+   safety time (PST) from seven design inputs. An optimizer uses it to find the
    route that tolerates the most interference while meeting the safety targets.
 2. **Run time:** ASMA, a base-station controller, watches per-hop link quality and
    raises transmit power (+3 dB, optionally +2 retries) only on degraded hops, with
